@@ -53,24 +53,39 @@ public class StudentResults {
 
 		processFeeDue(75000);
 		processFeeDue(10000);
-		
+
 		processMarks();
+		processFeeDue("Pass", 75000);
+	}
+
+	private static void processFeeDue(String res, int amt) {
+		long dueAmount = 0;
+		for (int i = 0; i < students.length; i++) {
+
+			if ((students[i].java >= 35) && (students[i].cpp >= 35) && (students[i].python >= 35)) {
+
+				if (students[i].fee <= amt) {// 10000
+					dueAmount = dueAmount + 75000 - students[i].fee;
+				}
+			} // if
+		} // for
+		
+		System.out.println("All Passed Student Due Amount--->"+dueAmount);
+
 	}
 
 	private static void processMarks() {
-		int pass =0;
+		int pass = 0;
 		for (int i = 0; i < students.length; i++) {
-			
-			if(  (students[i].java >=35) &&
-					(students[i].cpp >=35) &&
-					(students[i].python >=35) ){
-				
+
+			if ((students[i].java >= 35) && (students[i].cpp >= 35) && (students[i].python >= 35)) {
+
 				pass++;
-			}//if
-		}// for
-		
-		System.out.println("All Pass Count--->"+pass);
-		
+			} // if
+		} // for
+
+		System.out.println("All Pass Count--->" + pass);
+
 	}
 
 	private static void processFeeDue(int amt) {
